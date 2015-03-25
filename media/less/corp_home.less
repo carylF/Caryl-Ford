@@ -1,0 +1,61 @@
+#homepage {
+  .container-fluid {
+    @media(@non-mobile) {
+      background-image: url("/media/images/backgrounds/corp_homepage_center.jpg");
+      background-position: center bottom;
+      background-repeat: no-repeat;
+    } // @media(@non-mobile)
+
+    #banner {
+      h1 {
+	font-size: 2em;
+
+	> strong {
+	  color: #0087C2;
+	} // > strong
+
+      } // h1
+
+      #image {
+	margin-top: 1em;
+      }
+
+      a#pricing-signup {
+	.border-radius(10px);
+	background-color: #57B1D8;
+	padding: 10px 15px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-top: 1em;
+      } // a#pricing-signup
+
+    } // #banner
+
+  } // .container-fluid
+
+  #banner-caption {
+
+    #homepage.container-fluid#banner-caption;
+
+    @media(@non-mobile) {
+      background-image: url("/media/images/backgrounds/corp_homepage_shadow.png");
+      background-position: top center;
+      background-repeat: no-repeat;
+    } // @media(@non-mobile)
+
+    p {
+      margin:2em 0;
+    } // p
+
+  } // #banner-caption
+
+  .container {
+    .section, .comments {
+      padding: 0;
+    } // .section, .comments
+
+  } // .container
+
+} // #corp.homepage
