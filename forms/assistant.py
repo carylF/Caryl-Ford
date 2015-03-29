@@ -1,6 +1,6 @@
 import wtforms
 from wtforms import validators
-from models.bus import Bus
+from models.assistant import Assisstant
 
 
 class AssistantForm(wtforms.Form):

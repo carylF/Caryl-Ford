@@ -7,7 +7,7 @@ from models.assistant import Assistant
 from models.profile import Profile
 
 
-class BusDriverHandler(base.BaseHandler):
+class AssistantHandler(base.BaseHandler):
 
   @role_required(is_manager=True)
   def create(self):l
