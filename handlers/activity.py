@@ -1,3 +1,4 @@
+from forms.activity import ActivityForm
 from forms.assign_assistant import AssignAssistantForm
 from forms.activity_time import ActivityTimeForm
 from handlers import base
@@ -9,7 +10,7 @@ from models.activity import Activity
 from models.profile import Profile
 
 
-class BusHandler(base.BaseHandler):
+class ActivityHandler(base.BaseHandler):
 
   @role_required(is_manager=True)
   def create(self):
@@ -52,7 +53,7 @@ class BusHandler(base.BaseHandler):
 
   def list(self):
     # We pass form so we can generate it with the modal using macros.
-    return self.render_to_response('activity/list.haml', {'form': BusForm()})
+    return self.render_to_response('activity/list.haml', {'form': ActivityForm()})
 
   @role_required(is_manager=True, is_editor=True)
   def update_times(self, id):
@@ -86,7 +87,7 @@ class BusHandler(base.BaseHandler):
 
       assistant = Assistant.get_by_assistant_id(form.data['assistant_id'])
 
-      if not busDriver:
+      if not assistant:
         return self.redirect_to('activity.list', messages.BUS_DRIVER_NOT_FOUND)
 
       activity.assistant = assistant

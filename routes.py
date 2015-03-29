@@ -7,6 +7,7 @@ from handlers.signup import SignupHandler
 from handlers.static import PublicStaticHandler
 from handlers.contact import ContactHandler
 from handlers.editor import EditorHandler
+from handlers.activity import ActivityHandler
 from handlers.bus import BusHandler
 from handlers.bus_route import BusRouteHandler
 from handlers.bus_driver import BusDriverHandler
@@ -46,7 +47,18 @@ _route_info = [
         ProfileHandler, 'activate'),
     ('profile.view', None, '/profile/', ProfileHandler, 'view'),
 
-    ('bus.create', None, '/bus/create/', BusHandler, 'create'),
+    ('activity.create', None, '/activity/create/',ActivityHandler, 'create'),
+    ('activity.delete', None, '/activity/<id:\d+>/delete/',
+        ActivityHandler, 'delete'), 
+    ('activity.update_times', None, '/activity/<id:\d+>/update_times/',
+        ActivityHandler, 'update_times'), 
+    ('activity.assign_assisstant', None, '/activity/<id:\d+>/assign_assisstant/',
+        ActivityHandler, 'assign_assisstant'),
+    ('activity.list', None, '/activity/', ActivityHandler, 'list'),
+    ('activity.update', None, '/activity/<id:\d+>/update/',
+        ActivityHandler, 'update'),
+
+    ('bus.create', None, '/bus/create/',BusHandler, 'create'),
     ('bus.delete', None, '/bus/<id:\d+>/delete/',
         BusHandler, 'delete'), 
     ('bus.update_times', None, '/bus/<id:\d+>/update_times/',
