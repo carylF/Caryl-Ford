@@ -19,7 +19,7 @@ class ActivityHandler(base.BaseHandler):
     if self.request.method == 'POST' and form.validate():
 
       if Activity.get_by_activity_id(form.data['']):
-        self.session.add_flash(messages.BUS_EXISTS,
+        self.session.add_flash(messages.ACTIVITY_EXISTS,
                                level='error')
         return self.render_to_response('activity/form.haml', {'form': form})
 
@@ -32,10 +32,10 @@ class ActivityHandler(base.BaseHandler):
                 parent=self.get_current_account())
       activity.put()
 
-      self.session.add_flash(messages.BUS_CREATE_SUCCESS, level='info')
+      self.session.add_flash(messages.ACTIVITY_CREATE_SUCCESS, level='info')
       return self.redirect_to('activity.list')
 
-    self.session.add_flash(messages.BUS_CREATE_ERROR, level='error')
+    self.session.add_flash(messages.ACTIVITY_CREATE_ERROR, level='error')
     return self.redirect_to('activity.list')
 
   @role_required(is_manager=True)
@@ -43,11 +43,11 @@ class ActivityHandler(base.BaseHandler):
     activity = Activity.get_by_activity_id(int(id), parent=self.get_current_account())
 
     if not activity:
-      self.session.add_flash(messages.BUS_NOT_FOUND, level='error')
+      self.session.add_flash(messages.ACTIVITY_NOT_FOUND, level='error')
       return self.redirect_to('activity.list')
 
     activity.delete()
-    self.session.add_flash(messages.BUS_DELETE_SUCCESS)
+    self.session.add_flash(messages.ACTIVITY_DELETE_SUCCESS)
 
     return self.redirect_to('activity.list')
 
@@ -60,7 +60,7 @@ class ActivityHandler(base.BaseHandler):
     activity = Activity.get_by_activity_id(int(id), parent=self.get_current_account())
 
     if not activity:
-      return self.redirect_to('activity.list', messages.BUS_NOT_FOUND)
+      return self.redirect_to('activity.list', messages.ACTIVITY_NOT_FOUND)
 
     form = ActivityTimeForm(self.request.POST, obj=activity)
 
@@ -68,7 +68,7 @@ class ActivityHandler(base.BaseHandler):
       form.populate_obj(activity)
       activity.put()
 
-      self.session.add_flash(messages.BUS_Times_SUCCESS)
+      self.session.add_flash(messages.ACTIVITY_Times_SUCCESS)
       return self.redirect_to('activity.list')
 
     return self.render_to_response('activity/form.haml', {'form': form})
@@ -79,7 +79,7 @@ class ActivityHandler(base.BaseHandler):
     activity = Activity.get_by_id(int(id), parent=self.get_current_account())
 
     if not activity:
-      return self.redirect_to('activity.list', messages.BUS_NOT_FOUND)
+      return self.redirect_to('activity.list', messages.ACTIVITY_NOT_FOUND)
 
     form = AssignAssistantForm(self.request.POST)
 
@@ -88,15 +88,15 @@ class ActivityHandler(base.BaseHandler):
       assistant = Assistant.get_by_assistant_id(form.data['assistant_id'])
 
       if not assistant:
-        return self.redirect_to('activity.list', messages.BUS_DRIVER_NOT_FOUND)
+        return self.redirect_to('activity.list', messages.ASSIGN_ASSISTANT_NOT_FOUND)
 
       activity.assistant = assistant
       activity.put()
 
-      self.session.add_flash(messages.BUS_DRIVER_ASSIGN_SUCCESS)
+      self.session.add_flash(messages.ASSIGN_ASSISTANT_ASSIGN_SUCCESS)
       return self.redirect_to('activity.list')
 
-    self.session.add_flash(messages.BUS_DRIVER_ASSIGN_ERROR, level='error')
+    self.session.add_flash(messages.ASSIGN_ASSISTANT_ASSIGN_ERROR, level='error')
     return self.redirect_to('activity.list')
 
 
@@ -105,7 +105,7 @@ class ActivityHandler(base.BaseHandler):
     activity = Activity.get_by_id(int(id), parent=self.get_current_account())
 
     if not activity:
-      return self.redirect_to('activity.list', messages.BUS_NOT_FOUND)
+      return self.redirect_to('activity.list', messages.ACTIVITY_NOT_FOUND)
 
     form = ActivityForm(self.request.POST, obj=activity)
 
@@ -113,7 +113,7 @@ class ActivityHandler(base.BaseHandler):
       form.populate_obj(activity)
       activity.put()
 
-      self.session.add_flash(messages.BUS_UPDATE_SUCCESS)
+      self.session.add_flash(messages.ACTIVITY_UPDATE_SUCCESS)
       return self.redirect_to('activity.list')
 
     return self.render_to_response('activity/form.haml', {'form': form})

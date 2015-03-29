@@ -52,7 +52,7 @@ _route_info = [
         ActivityHandler, 'delete'), 
     ('activity.update_times', None, '/activity/<id:\d+>/update_times/',
         ActivityHandler, 'update_times'), 
-    ('activity.assign_assisstant', None, '/activity/<id:\d+>/assign_assisstant/',
+    ('activity.assign_assistant', None, '/activity/<id:\d+>/assign_assistant/',
         ActivityHandler, 'assign_assisstant'),
     ('activity.list', None, '/activity/', ActivityHandler, 'list'),
     ('activity.update', None, '/activity/<id:\d+>/update/',

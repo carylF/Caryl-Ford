@@ -16,7 +16,7 @@ class AssistantHandler(base.BaseHandler):
     if self.request.method == 'POST' and form.validate():
 
       if Assistant.get_by_driver_id(form.data['driver_id']):
-        self.session.add_flash(messages.BUS_DRIVER_EXISTS,
+        self.session.add_flash(messages.ASSIGN_ASSISTANT_EXISTS,
                                level='error')
         return self.render_to_response('assistant/form.haml', {'form': form})
 
@@ -32,10 +32,10 @@ class AssistantHandler(base.BaseHandler):
                                   form.data['last_name']))
       assistant.put()
 
-      self.session.add_flash(messages.BUS_DRIVER_CREATE_SUCCESS, level='info')
+      self.session.add_flash(messages.ASSIGN_ASSISTANT_CREATE_SUCCESS, level='info')
       return self.redirect_to('assistant.list')
 
-    self.session.add_flash(messages.BUS_DRIVER_CREATE_ERROR, level='error')
+    self.session.add_flash(messages.ASSIGN_ASSISTANT_CREATE_ERROR, level='error')
     return self.redirect_to('assistant.list')
 
   @role_required(is_manager=True)
@@ -43,11 +43,11 @@ class AssistantHandler(base.BaseHandler):
     assistant = Assistant.get_by_id(int(id), parent=self.get_current_account())
 
     if not assistant:
-      self.session.add_flash(messages.BUS_DRIVER_NOT_FOUND, level='error')
+      self.session.add_flash(messages.ASSIGN_ASSISTANT_NOT_FOUND, level='error')
       return self.redirect_to('assistant.list')
 
     assistant.delete()
-    self.session.add_flash(messages.BUS_DRIVER_DELETE_SUCCESS)
+    self.session.add_flash(messages.ASSIGN_ASSISTANT_DELETE_SUCCESS)
 
     return self.redirect_to('assistant.list')
 
@@ -56,7 +56,7 @@ class AssistantHandler(base.BaseHandler):
     assistant = Assistant.get_by_id(int(id), parent=self.get_current_account())
 
     if not assistant:
-      return self.redirect_to('assistant.list', messages.BUS_DRIVER_NOT_FOUND)
+      return self.redirect_to('assistant.list', messages.ASSIGN_ASSISTANT_NOT_FOUND)
 
     form = AssistantForm(self.request.POST, obj=assistant)
 
@@ -66,7 +66,7 @@ class AssistantHandler(base.BaseHandler):
                                   form.data['last_name']))
       assistant.put()
 
-      self.session.add_flash(messages.BUS_DRIVER_UPDATE_SUCCESS)
+      self.session.add_flash(messages.ASSIGN_ASSISTANT_UPDATE_SUCCESS)
       return self.redirect_to('assistant.list')
 
     return self.render_to_response('assistant/form.haml', {'form': form})
