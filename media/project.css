@@ -8405,10 +8405,8 @@ ul.block-list.alternating li:nth-child(odd) > div {
   right: 5px;
 }
 footer {
-  /*background-image: url("/media/images/backgrounds/corporate_footer.png");*/
   background-color: #2B2B2B;
   color: #D74B4B;
-  margin-top: 20px;
   font-size: 16px;
 }
 footer#corporate-footer {
@@ -8466,9 +8464,6 @@ footer .container ul li {
   border-bottom: 1px solid #354B5E;
   padding: 8px 0 8px 0;
 }
-.content {
-  background-color: #B3B1B2;
-}
 #homepage {
   background-image: url("/media/images/backgrounds/bcg2.jpg");
 }
@@ -8495,7 +8490,7 @@ footer .container ul li {
   color: #6b8793;
   font-size: 14px;
   position: relative;
-  z-index: 5;
+  /*p z-index: 5;*/
   background-image: url("/media/images/backgrounds/bcg2.jpg");
 }
 @media (min-width: 768px) {
@@ -8509,10 +8504,26 @@ footer .container ul li {
   display: block;
   font-style: italic;
   font-size: 20px;
-  color: #FFF;
+  color: black;
   margin-top: 12em;
   margin-left: 5em;
   margin-bottom: 3em;
+  background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 25px;
+}
+#homepage .container-fluid #banner a#pricing-signup {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #57B1D8;
+  padding: 10px 15px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-left: 4em;
 }
 #homepage .container .section {
   padding-top: 20px;
@@ -8547,7 +8558,7 @@ footer .container ul li {
   font-style: italic;
 }
 .content {
-  background-color: #B3B1B2;
+  padding-bottom: 30px;
 }
 .login {
   margin-top: 2em;
@@ -8999,6 +9010,9 @@ footer .container ul li {
   margin-top: 2em;
   position: relative;
   left: -50%;
+}
+#signup {
+  padding-bottom: 30px;
 }
 #signup #signup-form {
   text-align: center;
@@ -9830,9 +9844,6 @@ footer .container ul li {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
-.content {
-  background-color: #B3B1B2;
-}
 #contact {
   padding-bottom: 2em;
   padding-top: 2em;
@@ -10026,7 +10037,7 @@ footer .container ul li {
   margin-bottom: 0;
 }
 #contact form.send-message .form-actions {
-  background-color: #84978F;
+  background-color: white;
 }
 #contact form.send-message .form-actions button {
   display: inline-block;
@@ -10180,36 +10191,4 @@ footer .container ul li {
 #contact form.send-message .form-actions button .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-}
-#homepage .container-fluid {
-  background-image: url("/media/images/backgrounds/bcg2.jpg");
-}
-@media (min-width: 768px) {
-  #homepage .container-fluid {
-    background-image: url("/media/images/backgrounds/bcg2.jpg");
-    background-position: center bottom;
-    background-repeat: no-repeat;
-  }
-}
-#homepage .container-fluid #banner a#pricing-signup {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  background-color: #57B1D8;
-  padding: 10px 15px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 1.5em;
-  margin-top: 1em;
-  margin-left: 4em;
-}
-#homepage .container-fluid #banner p {
-  background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 25px;
-}
-#homepage .container .section,
-#homepage .container .comments {
-  padding: 0;
 }

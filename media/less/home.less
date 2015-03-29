@@ -1,6 +1,4 @@
-.content{
-  background-color:   #B3B1B2;
-}
+
 #homepage {
     background-image: url("/media/images/backgrounds/bcg2.jpg");
 
@@ -32,7 +30,7 @@
     color: #6b8793;
     font-size: 14px;
     position: relative;
-    z-index: 5;
+   /*p z-index: 5;*/
     background-image: url("/media/images/backgrounds/bcg2.jpg");
 
     @media(@non-mobile) {
@@ -47,11 +45,27 @@
         display: block;
         font-style: italic;
         font-size: 20px;
-        color: #FFF;
+        color: black;
         margin-top: 12em;
         margin-left: 5em;
         margin-bottom: 3em;
+
+        background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 25px;
       } // p
+
+      a#pricing-signup {
+        .border-radius(10px);
+        background-color: #57B1D8;
+        padding: 10px 15px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5em;
+        margin-top: 1em;
+        margin-left: 4em;
+      } // a#pricing-signup
 
      
     } // #banner
