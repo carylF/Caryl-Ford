@@ -9,7 +9,7 @@ class Instructor(db.Model):
 
 
   @classmethod
-  def get_by_id(cls, id_num):
+  def get_by_instructor_id(cls, id_num):
     return cls.all().filter('id_num=', id_num).get()
 
   @classmethod

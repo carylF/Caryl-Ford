@@ -18,7 +18,7 @@ class ActivityHandler(base.BaseHandler):
 
     if self.request.method == 'POST' and form.validate():
 
-      if Activity.get_by_activity_id(form.data['activity_id']):
+      if Activity.get_by_activity_id(form.data['id']):
         self.session.add_flash(messages.ACTIVITY_EXISTS,
                                level='error')
         return self.render_to_response('activity/form.haml', {'form': form})
@@ -40,7 +40,7 @@ class ActivityHandler(base.BaseHandler):
 
   @role_required(is_manager=True)
   def delete(self, id):
-    activity = Activity.get_by_id(int(id), parent=self.get_current_account())
+    activity = Activity.get_by_activity_id(int(id), parent=self.get_current_account())
 
     if not activity:
       self.session.add_flash(messages.ACTIVITY_NOT_FOUND, level='error')
@@ -57,7 +57,7 @@ class ActivityHandler(base.BaseHandler):
 
   @role_required(is_manager=True, is_editor=True)
   def update_times(self, id):
-    activity = Activity.get_by_id(int(id), parent=self.get_current_account())
+    activity = Activity.get_by_activity_id(int(id), parent=self.get_current_account())
 
     if not activity:
       return self.redirect_to('activity.list', messages.ACTIVITY_NOT_FOUND)

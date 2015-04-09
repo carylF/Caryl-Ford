@@ -8,28 +8,28 @@
     %thead
       %th
         %i.icon-user
-        Employee
+        Assistant
       %th
-        Driver ID
+        Assistant ID
       %th
-        Assigned bus ID
+        Assigned activity
       %th
-        Route number
+
       %th
-        Arrival time
-      %th 
-        Departure time
+
+      %th
+
     %tbody
-      -for bus_driver in current_account.get_BusDriver()
+      -for assistant in current_account.get_Assistant()
         %tr
           %td
-            %a(href="") #{bus_driver.name}
+            %a(href="") #{assistant.name}
           %td
-            %a(href="") #{bus_driver.driver_id}
+            %a(href="") #{assistant.assistant_id}
           %td
             %a(href="") 0
           %td
             %a(href="") 0
       -else
         %tr: %td(colspan="4")
-          No Employees
+          No Assistants

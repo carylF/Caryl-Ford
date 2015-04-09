@@ -1,13 +1,9 @@
 import wtforms
 from wtforms import validators
-from models.assistant import Assistant
+from models.instructor import Instructor
 
 
-class AssistantForm(wtforms.Form):
-
-  assistant_id = wtforms.StringField(validators=[
-      validators.Required(),
-      validators.Length(max=30)])
+class InstructorForm(wtforms.Form):
 
   name = wtforms.StringField(validators=[
       validators.Required(),
@@ -21,16 +17,9 @@ class AssistantForm(wtforms.Form):
       validators.Required(),
       validators.Length(max=30)])
 
-  status = wtforms.StringField(validators=[
+  id_num = wtforms.StringField(validators=[
       validators.Required(),
-      validators.Length(max=10)])
-
-  num_hours = wtforms.IntegerField(validators=[
-      validators.Required()])
-
-  qualifications = wtforms.StringField(validators=[
-      validators.Required(),
-      validators.Length(max=100)])
+      validators.Length(max=30)])
 
   def validate_name(self, field):
       field.data = field.data.strip()
@@ -41,8 +30,5 @@ class AssistantForm(wtforms.Form):
   def validate_department(self, field):
       field.data = field.data.strip()
 
-  def validate_status(self, field):
-      field.data = field.data.strip()
-
-  def validate_qualifications(self, field):
+  def validate_id_num(self, field):
       field.data = field.data.strip()

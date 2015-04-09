@@ -12,8 +12,8 @@ class Assistant(db.Model):
 
 
   @classmethod
-  def get_by_assistant_id(cls, id_num):
-    return cls.all().filter('id_num=', id_num).get()
+  def get_by_assistant_id(cls, assistant_id):
+    return cls.all().filter('assistant_id=', assistant_id).get()
 
   @classmethod
   def get_by_faculty(cls, faculty):

@@ -1,0 +1,44 @@
+-extends "private_base.haml"
+
+-set title = "Assistant"
+
+-block content
+  -include "modals/assistant_create.haml"
+  %button.pull-right.btn.btn-success.btn-large(role="button", \
+    data-modal="modal")
+    %i.icon-plus
+    Add assistant
+
+  %p.lead Assistant
+
+  %table.table.table-striped.table-hover.table-bordered
+    %thead: %tr
+      %th Name
+      %th ID
+      %th Faculty
+      %th Department
+      %th status
+      %th # Hours
+      %th qualifications
+    %tbody
+      -for assistant in current_account.get_Assistant()
+        %tr
+          %td #{assistant.name}
+          %td #{assistant.assistant_id}
+          %td #{assistant.faculty}
+          %td #{assistant.department}
+          %td #{assistant.status}
+          %td #{assistant.num_hours}
+          %td #{assistant.qualifications}
+          %td
+          %td
+            %a.btn(href="#{uri_for('assistant.update', id=assistant.key().id())}")
+              %i.icon-edit
+              Update Assistant
+            %a.btn.btn-danger(href="#{uri_for('assistant.delete', id=assistant.key().id())}")
+              %i.icon-trash
+              Delete Assistant
+      -else
+        %tr
+          %td(colspan="3")
+            No assistants have been added added yet.

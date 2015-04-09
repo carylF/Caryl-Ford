@@ -5,10 +5,6 @@ from models.assistant import Assistant
 
 class AssistantForm(wtforms.Form):
 
-  assistant_id = wtforms.StringField(validators=[
-      validators.Required(),
-      validators.Length(max=30)])
-
   name = wtforms.StringField(validators=[
       validators.Required(),
       validators.Length(max=30)])

@@ -1,0 +1,36 @@
+-extends "private_base.haml"
+
+-set title = "Instructor"
+
+-block content
+  -include "modals/instructor_create.haml"
+  %button.pull-right.btn.btn-success.btn-large(role="button", \
+    data-modal="modal")
+    %i.icon-plus
+    Add new instructor
+
+  %p.lead Instructor
+
+  %table.table.table-striped.table-hover.table-bordered
+    %thead: %tr
+      %th ID
+      %th Name
+      %th Faculty
+      %th Department
+    %tbody
+      -for instructor in current_account.get_Instructor()
+        %tr
+          %td #{instructor.id_num}
+          %td #{instructor.name}
+          %td #{instructor.faculty}
+          %td #{instructor.department}
+            %a.btn(href="#{uri_for('instructor.update', id=instructor.key().id())}")
+              %i.icon-edit
+              Update Instructor
+            %a.btn.btn-danger(href="#{uri_for('instructor.delete', id=instructor.key().id())}")
+              %i.icon-trash
+              Delete Instructor
+      -else
+        %tr
+          %td(colspan="3")
+            No Instructor has been added added yet.

@@ -8,9 +8,8 @@ from handlers.static import PublicStaticHandler
 from handlers.contact import ContactHandler
 from handlers.editor import EditorHandler
 from handlers.activity import ActivityHandler
-from handlers.bus import BusHandler
-from handlers.bus_route import BusRouteHandler
-from handlers.bus_driver import BusDriverHandler
+from handlers.assistant import AssistantHandler
+from handlers.instructor import InstructorHandler
 
 
 __all__ = ['application_routes']
@@ -47,41 +46,30 @@ _route_info = [
         ProfileHandler, 'activate'),
     ('profile.view', None, '/profile/', ProfileHandler, 'view'),
 
-    ('activity.create', None, '/activity/create/',ActivityHandler, 'create'),
+    ('activity.create', None, '/activity/create/', ActivityHandler, 'create'),
     ('activity.delete', None, '/activity/<id:\d+>/delete/',
-        ActivityHandler, 'delete'), 
+        ActivityHandler, 'delete'),
     ('activity.update_times', None, '/activity/<id:\d+>/update_times/',
-        ActivityHandler, 'update_times'), 
+        ActivityHandler, 'update_times'),
     ('activity.assign_assistant', None, '/activity/<id:\d+>/assign_assistant/',
-        ActivityHandler, 'assign_assisstant'),
+        ActivityHandler, 'assign_driver'),
     ('activity.list', None, '/activity/', ActivityHandler, 'list'),
     ('activity.update', None, '/activity/<id:\d+>/update/',
         ActivityHandler, 'update'),
 
-    ('bus.create', None, '/bus/create/',BusHandler, 'create'),
-    ('bus.delete', None, '/bus/<id:\d+>/delete/',
-        BusHandler, 'delete'), 
-    ('bus.update_times', None, '/bus/<id:\d+>/update_times/',
-        BusHandler, 'update_times'), 
-    ('bus.assign_driver', None, '/bus/<id:\d+>/assign_driver/',
-        BusHandler, 'assign_driver'),
-    ('bus.list', None, '/bus/', BusHandler, 'list'),
-    ('bus.update', None, '/bus/<id:\d+>/update/',
-        BusHandler, 'update'),
+    ('assistant.create', None, '/assistant/create/', AssistantHandler, 'create'),
+    ('assistant.delete', None, '/assistant/<id:\d+>/delete/',
+        AssistantHandler, 'delete'),
+    ('assistant.list', None, '/assistant/', AssistantHandler, 'list'),
+    ('assistant.update', None, '/assistant/<id:\d+>/update/',
+        AssistantHandler, 'update'),
 
-    ('bus_route.create', None, '/bus_route/create/', BusRouteHandler, 'create'),
-    ('bus_route.delete', None, '/bus_route/<id:\d+>/delete/',
-        BusRouteHandler, 'delete'),    
-    ('bus_route.list', None, '/bus_route/', BusRouteHandler, 'list'),
-    ('bus_route.update', None, '/bus_route/<id:\d+>/update/',
-        BusRouteHandler, 'update'),
-
-    ('bus_driver.create', None, '/bus_driver/create/', BusDriverHandler, 'create'),
-    ('bus_driver.delete', None, '/bus_driver/<id:\d+>/delete/',
-        BusDriverHandler, 'delete'),
-    ('bus_driver.list', None, '/bus_driver/', BusDriverHandler, 'list'),
-    ('bus_driver.update', None, '/bus_driver/<id:\d+>/update/',
-        BusDriverHandler, 'update'),
+    ('instructor.create', None, '/instructor/create/', InstructorHandler, 'create'),
+    ('instructor.delete', None, '/instructor/<id:\d+>/delete/',
+        InstructorHandler, 'delete'),
+    ('instructor.list', None, '/instructor/', InstructorHandler, 'list'),
+    ('instructor.update', None, '/instructor/<id:\d+>/update/',
+        InstructorHandler, 'update'),
 ]
 
 for name, methods, pattern, handler_cls, handler_method in _route_info:

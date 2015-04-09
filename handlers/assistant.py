@@ -10,26 +10,27 @@ from models.profile import Profile
 class AssistantHandler(base.BaseHandler):
 
   @role_required(is_manager=True)
-  def create(self):l
+  def create(self):
     form = AssistantForm(self.request.POST)
 
     if self.request.method == 'POST' and form.validate():
 
-      if Assistant.get_by_driver_id(form.data['driver_id']):
+      if Assistant.get_by_assistant_id(form.data['assistant_id']):
         self.session.add_flash(messages.ASSIGN_ASSISTANT_EXISTS,
                                level='error')
         return self.render_to_response('assistant/form.haml', {'form': form})
 
       assistant = Assistant(assistant_id=form.data['assistant_id'],
-                            facility=form.data['facility'],
+                            name=form.data['name'],
+                            faculty=form.data['faculty'],
                             department=form.data['department'],
                             status=form.data['status'],
                             num_hours=form.data['num_hours'],
                             qualifications=form.data['qualifications'],
                             parent=self.get_current_account())
 
-      assistant.name = ' '.join((form.data['first_name'],
-                                  form.data['last_name']))
+      # assistant.name = ' '.join((form.data['first_name'],
+      #                             form.data['last_name']))
       assistant.put()
 
       self.session.add_flash(messages.ASSIGN_ASSISTANT_CREATE_SUCCESS, level='info')

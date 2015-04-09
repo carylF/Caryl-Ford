@@ -21,24 +21,20 @@ class Account(db.Model):
   def get_profiles(self):
     return Profile.all().ancestor(self)
 
-  def get_employees(self):
-    return self.get_profiles().filter(
-        'is_editor =', False).filter('is_manager = ', False)
-
-  def get_BusRoutes(self):
+  def get_Activity(self):
     # This is not at the top to prevent circular imports.
-    from models.bus_route import BusRoute
-    return BusRoute.all().ancestor(self)
+    from models.activity import Activity
+    return Activity.all().ancestor(self)
 
-  def get_Bus(self):
+  def get_Instructor(self):
     # This is not at the top to prevent circular imports.
-    from models.bus import Bus
-    return Bus.all().ancestor(self)
+    from models.instructor import Instructor
+    return Instructor.all().ancestor(self)
 
-  def get_BusDriver(self):
+  def get_Assistant(self):
     # This is not at the top to prevent circular imports.
-    from models.bus_driver import BusDriver
-    return BusDriver.all().ancestor(self) 
+    from models.assistant import Assistant
+    return Assistant.all().ancestor(self)
 
   def get_timezone(self):
     return pytz.timezone(self.timezone or self.DEFAULT_TIMEZONE)
